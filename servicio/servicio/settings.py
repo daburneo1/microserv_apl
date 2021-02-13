@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'servicio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'certificado',
+        'NAME': 'servicio',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
     }
