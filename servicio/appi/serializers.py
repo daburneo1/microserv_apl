@@ -10,27 +10,30 @@ class UserSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = '__all__'
-
-class CourseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Course
-        fields = '__all__'
-
-
-
+        fields = ['user','rol_student','rol_teacher']
 
 
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State
-        fields = '__all__'
+        fields = ['course','student','state','info']
+
 class InstitutionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Institution
-        fields = '__all__'
+        fields = ['nameInstitution']
 
 class CourseDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = ['nameCourse','numHours','edition','price','date','institution','instructor','student']
+
+
+class CourseSerializer(serializers.ModelSerializer):
+    institution = InstitutionSerializer()
+    instructor = UserSerializer()
+    student = UserSerializer(many=True)
+    class Meta:
+        model = Course
+        fields = ['nameCourse','numHours','edition','price','date','institution','instructor','student']
+
