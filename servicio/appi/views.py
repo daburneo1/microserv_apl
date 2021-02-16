@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, generics
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
-from .serializers import (UserSerializer,InstitutionSerializer, StateSerializer, CourseSerializer,UserProfileSerializer,CourseDetailSerializer)
-from .models import (UserProfile, Course, Institution,State,)
+from .serializers import (UserSerializer,InstitutionSerializer, StateSerializer, CourseSerializer,UserProfileSerializer,CourseDetailSerializer,CourseStateSerializer)
+from .models import (UserProfile, Course, Institution,State,CourseState)
 
 
 # Create your views here.
@@ -31,3 +31,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+
+class CourseStateViewSet(viewsets.ModelViewSet):
+    queryset = CourseState.objects.all()
+    serializer_class = CourseStateSerializer
